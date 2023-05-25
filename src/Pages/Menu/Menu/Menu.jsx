@@ -36,25 +36,25 @@ const Menu = () => {
             <MenuCategory items={offered}></MenuCategory>
             <MenuCategory
                 coverImg={img2}
-                title={"DESSERTS"}
+                title={"desserts"}
                 coverMenu={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 items={dessert}
             ></MenuCategory>
             <MenuCategory
                 coverImg={img3}
-                title={"PIZZA"}
+                title={"pizza"}
                 coverMenu={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 items={pizza}
             ></MenuCategory>
             <MenuCategory
                 coverImg={img4}
-                title={"SALADS"}
+                title={"Salad"}
                 coverMenu={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 items={salad}
             ></MenuCategory>
             <MenuCategory
                 coverImg={img5}
-                title={"SOUPS"}
+                title={"soups"}
                 coverMenu={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 items={soup}
             ></MenuCategory>
