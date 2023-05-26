@@ -7,7 +7,7 @@ const Nav = () => {
     <li><Link>CONTACT US</Link></li>
     <li><Link>DASHBOARD</Link></li>
     <li><Link to='/menu'>Our Menu</Link></li>
-    <li><Link to='/order'>Our Shop</Link></li>
+    <li><Link to='/order/Salad'>Our Shop</Link></li>
     </>
     return (
         <>
