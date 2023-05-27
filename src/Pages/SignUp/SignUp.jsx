@@ -1,18 +1,29 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext)
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const navigate = useNavigate()
+
     const onSubmit = data => {
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        console.log('user profile updated successfully');
+                        reset()
+                        navigate('/')
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
             })
             .catch(errors => {
                 console.log(errors);
@@ -41,6 +52,13 @@ const SignUp = () => {
                                     </label>
                                     <input type="text" {...register("name", { required: true })} name='name' placeholder="Name" className="input input-bordered" />
                                     {errors.name && <span>This field is required</span>}
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Photo URL</span>
+                                    </label>
+                                    <input type="text" {...register("photo", { required: true })} name='photo' placeholder="Photo URL" className="input input-bordered" />
+                                    {errors.photo && <span>This field is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
