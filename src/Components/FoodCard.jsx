@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useCart from '../Hooks/useCart';
 
 const FoodCard = ({ item }) => {
     const { name, image, price, recipe, _id } = item;
     const { user } = useContext(AuthContext)
+    const [cart, refetch] = useCart()
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -23,6 +25,7 @@ const FoodCard = ({ item }) => {
                 .then(data => {
                     console.log(data);
                     alert('data added to cart');
+                    refetch()
                 })
                 .catch(error => {
                     console.log(error);
