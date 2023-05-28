@@ -24,9 +24,9 @@ const DashBoard = () => {
                         <li><NavLink to='/dashboard/review'><FaWallet></FaWallet>add review</NavLink></li>
                         <li><NavLink to='/dashboard/booking'><FaWallet></FaWallet>my booking</NavLink></li>
                         <div className="divider"></div> 
-                        <li><NavLink to='/dashboard/home'><FaWallet></FaWallet>Home</NavLink></li>
-                        <li><NavLink to='/dashboard/menu'><FaWallet></FaWallet>Menu</NavLink></li>
-                        <li><NavLink to='/dashboard/shop'><FaWallet></FaWallet>Shop</NavLink></li>
+                        <li><NavLink to='/'><FaWallet></FaWallet>Home</NavLink></li>
+                        <li><NavLink to='/menu'><FaWallet></FaWallet>Menu</NavLink></li>
+                        <li><NavLink to='/order/:category'><FaWallet></FaWallet>Shop</NavLink></li>
                         <li><NavLink to='/dashboard/contact'><FaWallet></FaWallet>Contact</NavLink></li>
                     </ul>
                 </div>
