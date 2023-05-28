@@ -17,11 +17,11 @@ const Nav = () => {
     const navOptions = <>
         <li><Link>Home</Link></li>
         <li><Link>CONTACT US</Link></li>
-        <li><Link>DASHBOARD</Link></li>
+        <li><Link to='/dashboard/myCart'>DASHBOARD</Link></li>
         <li><Link to='/menu'>Our Menu</Link></li>
         <li><Link to='/order/Salad'>Our Shop</Link></li>
         <li>
-            <Link>
+            <Link to='/dashboard/myCart'>
                 <button className="btn gap-2">
                     <FaShoppingCart></FaShoppingCart>
                     <div className="badge badge-secondary">+{cart?.length || 0}</div>
