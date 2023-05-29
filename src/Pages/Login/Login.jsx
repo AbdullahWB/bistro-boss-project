@@ -3,6 +3,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [disable, setDisable] = useState(true)
@@ -85,6 +86,7 @@ const Login = () => {
                                     <input disabled={disable} className="btn btn-primary" type="submit" value="Login" />
                                 </div>
                             </form>
+                            <SocialLogin></SocialLogin>
                             <p><small>New Here?<Link to='/signUp'>SignUp</Link></small></p>
                         </div>
                     </div>

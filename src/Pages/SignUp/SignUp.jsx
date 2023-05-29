@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Provider/AuthProvider';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -17,9 +18,23 @@ const SignUp = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        console.log('user profile updated successfully');
-                        reset()
-                        navigate('/')
+                        const saveUser = { nam: data.name, email: data.email }
+                        fetch('http://localhost:3000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.insertedId) {
+                                    alert('Inserted')
+                                    reset()
+                                    navigate('/')
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error);
@@ -79,6 +94,7 @@ const SignUp = () => {
                                     <input className="btn btn-primary" type="submit" value="Login" />
                                 </div>
                             </form>
+                            <SocialLogin></SocialLogin>
                             <p><small>New Here?<Link to='/login'>SignUp</Link></small></p>
                         </div>
                     </div>
