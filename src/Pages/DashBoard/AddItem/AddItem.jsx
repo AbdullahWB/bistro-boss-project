@@ -1,10 +1,48 @@
 import React from 'react';
 import SectionTittle from '../../../Components/SectionTittle';
 import { useForm } from "react-hook-form";
+import UseAxiosSecure from '../../../Hooks/UseAxiosSecure';
+import Swal from 'sweetalert2';
+
+
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddItem = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [axiosSecure] = UseAxiosSecure()
+    const { register, handleSubmit, watch, reset, formState: { errors },  } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+
+    const onSubmit = data => {
+        console.log(data)
+        const formData = new FormData()
+        formData.append('image', data.image[0])
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgResponse => {
+                const imgURL = imgResponse.data.display_url;
+                const { name, price, category, recipe } = data;
+                const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
+                console.log(newItem);
+                axiosSecure.post('/menu', newItem)
+                    .then(data => {
+                        console.log('after posting new menu item', data.data);
+                        reset()
+                        if (data.data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Menu item added successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
+            })
+    };
 
     console.log(watch("example"));
     return (
@@ -25,8 +63,8 @@ const AddItem = () => {
                         <label className="label">
                             <span className="label-text">Category*</span>
                         </label>
-                        <select {...register("category", { required: true })} className="select select-bordered">
-                            <option disabled selected>Category</option>
+                        <select defaultValue='Category' {...register("category", { required: true })} className="select select-bordered">
+                            <option disabled>Category</option>
                             <option>drinks</option>
                             <option>desserts</option>
                             <option>soups</option>
