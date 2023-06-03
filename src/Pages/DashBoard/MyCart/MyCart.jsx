@@ -46,7 +46,7 @@ const MyCart = () => {
             <div className='p-10'>
                 <div className='flex justify-between'>
                     <h1 className='text-3xl'>total items {cart.length}</h1>
-                    <h2 className='text-3xl'>total price {total}</h2>
+                    <h2 className='text-3xl'>total price {total}$</h2>
                     <button className='btn btn-primary'>PAY</button>
                 </div>
                 <div className="overflow-x-auto w-full">
