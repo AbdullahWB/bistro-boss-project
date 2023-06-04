@@ -13,6 +13,8 @@ import AddItem from "../../Pages/DashBoard/AddItem/AddItem";
 import AdminRoute from "../Admin/AdminRoute";
 import ManageItems from "../../Pages/ManageItems/ManageItems";
 import Payment from "../../Pages/DashBoard/Payment/Payment";
+import UserHome from "../../Pages/DashBoard/UserHome/UserHome";
+import AdminHome from "../../Pages/DashBoard/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
             {
                 path: 'payment',
                 element: <Payment></Payment>
+            },
+            {
+                path: 'userHome',
+                element: <UserHome></UserHome>
+            },
+            {
+                path: 'adminHome',
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
             }
         ]
     }

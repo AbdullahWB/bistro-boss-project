@@ -24,13 +24,13 @@ const DashBoard = () => {
                         {/* <!-- Sidebar content here --> */}
                         {
                             isAdmin ? <>
-                                <li><NavLink to='/dashboard/home'><FaWallet></FaWallet>Admin Home</NavLink></li>
+                                <li><NavLink to='/dashboard/adminHome'><FaWallet></FaWallet>Admin Home</NavLink></li>
                                 <li><NavLink to='/dashboard/addItem'><FaWallet></FaWallet>add items</NavLink></li>
                                 <li><NavLink to='/dashboard/manageItems'><FaWallet></FaWallet>manage items</NavLink></li>
                                 <li><NavLink to='/dashboard/review'><FaWallet></FaWallet>Manage bookings</NavLink></li>
                                 <li><NavLink to='/dashboard/allUsers'><FaWallet></FaWallet>all users</NavLink></li>
                             </> : <>
-                                <li><NavLink to='/dashboard/home'><FaWallet></FaWallet>User Home</NavLink></li>
+                                <li><NavLink to='/dashboard/userHome'><FaWallet></FaWallet>User Home</NavLink></li>
                                 <li><NavLink to='/dashboard/reservation'><FaWallet></FaWallet>reservation</NavLink></li>
                                 <li><NavLink to='/dashboard/payment'><FaWallet></FaWallet>payment history</NavLink></li>
                                 <li><NavLink to='/dashboard/myCart'><FaWallet></FaWallet>my cart</NavLink></li>
